@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalabel=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_438243_ukwkfu91r3d0wwmi.css">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: #148ad2;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header img{
+            width: 100%;
+            height: 0.8rem;            
+            vertical-align: middle;          
+        }
+        header div {
+            display: flex;
+            padding: 0 0.5rem;
+            height: 1.8rem;
+            line-height: 1.8rem;
+            font-size: 0.8rem;
+            justify-content: space-between;
+        }
+
+        header div i {
+            font-size: 1rem!important;
+        }
+        header div .empty {
+            width: 1rem
+        }
+
+
+        section {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            flex: 1;
+            background: #f4f4f4
+        }
+
+        section ul {
+            margin-top: 0.4rem;
+        }
+        section img{
+            width: 1.44rem;
+            height: 1.44rem;
+            border-radius: 50%;
+        }
+
+        section li {
+            padding: 0.5rem;
+            display: flex;
+            font-size: 0.64rem;
+            line-height: 1.32rem;
+            justify-content: space-between;
+            border-top: 1px solid #f4f4f4;
+            background: #fff;
+        }
+
+        section li .right {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        li span {
+            font-size: 0.6rem;
+            line-height: 1.32rem;
+            
+            color: #646464;
+        }
+
+        li i {
+            font-size: 0.64rem!important;
+            margin-left: 0.4rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        
+        <img src="images/per_01.jpg" alt="">
+        <div>
+            <i class="icon iconfont icon-zuoyou1"></i>
+            <span>个人资料</span>
+            <span class="empty"></span>
+        </div>
+    </header>
+    <section>
+        <ul>
+            <li>
+                <div class="left">头像</div>
+                <div class="right"><img src="images/per_04.jpg" alt=""><i class="icon iconfont icon-zuoyou"></i></div>
+            </li>
+            <li>
+                <div class="left">昵称</div>
+                <div class="right"><span>小绿叶</span><i class="icon iconfont icon-zuoyou"></i></div>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <div class="left">性别</div>
+                <div class="right"><span>男</span><i class="icon iconfont icon-zuoyou"></i></div>
+            </li>
+            <li>
+                <div class="left">邮箱</div>
+                <div class="right"><span></span><i class="icon iconfont icon-zuoyou"></i></div>
+            </li>
+            <li>
+                <div class="left">生日</div>
+                <div class="right"><span>2017-07-01</span><i class="icon iconfont icon-zuoyou"></i></div>
+            </li>
+            <li>
+                <div class="left">所在城市</div>
+                <div class="right"><span></span><i class="icon iconfont icon-zuoyou"></i></div>
+            </li>
+            <li>
+                <div class="left">个性签名</div>
+                <div class="right"><span>添加签名，展示你的个性</span><i class="icon iconfont icon-zuoyou"></i></div>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <div class="left">手机绑定</div>
+                <div class="right"><span>未绑定</span><i class="icon iconfont icon-zuoyou"></i></div>
+            </li>
+
+        </ul>
+    </section>
+
+</body>
+<script>
+    document.documentElement.style.fontSize = innerWidth / 15 + "px"
+
+</script>
+
+</html>

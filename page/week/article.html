@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalabel=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_438243_qhtkddbl5trzfr.css">
+    <title>article</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        header {
+            position: fixed;
+            top: 0;
+            background: #148ad2;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header img {
+            width: 100%;
+            height: 0.8rem;
+            vertical-align: middle;
+        }
+
+        header div {
+            display: flex;
+            padding: 0 0.5rem;
+            height: 1.8rem;
+            line-height: 1.8rem;
+            font-size: 0.8rem;
+            justify-content: space-between;
+        }
+
+        header div i {
+            font-size: 1rem!important;
+        }
+
+        header div .empty {
+            height: 100%;
+            font-size: 0.75rem;
+            line-height: 1.8rem;
+            
+        }
+
+        section {
+           // overflow-y: auto;
+            margin-top: 2.7rem;
+            padding: 0 0.5rem;
+                    
+            flex-direction: column;
+            background: #f4f4f4
+        }
+
+        section .head {
+            width: 100%;
+            height: 1.6rem;
+            display: flex;
+        }
+
+        .head div {
+            flex: 1;
+            line-height: 1.6rem;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #333;
+        }
+
+        .head div.active {
+            color: #1489cc;
+        }
+
+        .row {
+            width: 100%;
+            height: 4.4rem;
+            padding: .4rem 0;
+            display: flex;
+        }
+
+        img {
+            width: 4.52rem;
+            height: 3.6rem; 
+        }
+
+        .message {            
+            margin-left: 0.5rem;
+            padding: 0.3rem 0 0 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message h4 {
+            font-size: 0.68rem;
+            font-weight: 500;
+            margin: 0;
+            padding: 0;
+        }
+
+        .iconf {
+            width: 100%;
+            display: flex;
+            justify-content: space-between
+        }
+
+        
+
+
+        .iconf span {
+            display: inline-block;
+            font-size: 0.5rem!important;
+            color: #939393;
+            max-width: 5rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .iconf div span:first-child {
+            margin-right: 0.2rem;
+        }
+
+        .iconf i {
+            font-size: 0.5rem!important;
+            margin-right: 0.1rem
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .column h2 {
+            font-size: 0.8rem;
+            font-weight: 400
+        }
+
+        .column .imgcol {
+            display: flex;
+            justify-content: space-between
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="images/per_01.jpg" alt="">
+        <div>
+            <i class="icon iconfont icon-zuoyou1"></i>
+            <span>我的收藏</span>
+            <span class="empty">编辑</span>
+        </div>
+    </header>
+    <section>
+        <div class="head">
+            <div class="active">文章</div>
+            <div>视频</div>
+        </div>
+        <div class="row">
+            <img src="images/art_03.jpg" alt="">
+            <div class="message">
+                <h4>联想高层再强调：被解职的刘军回归陈旭东离开</h4>
+                <div class="iconf">
+                    <div><span><i class="icon iconfont icon-clock"></i>30分钟前收藏</span></div>
+                    <div>
+                        <span><i class="icon iconfont icon-eye1"></i>356</span>
+                        <span><i class="icon iconfont icon-message"></i>56</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <h2>马化腾：互联网公司要灰度处理</h2>
+            <div class="imgcol">
+                <img src="images/art_06.jpg" alt="">
+                <img src="images/art_08.jpg" alt="">
+                <img src="images/art_10.jpg" alt="">
+            </div>
+            <div class="iconf">
+                <div>
+                    <span>老道消息</span>
+                    <span><i class="icon iconfont icon-clock"></i>30分钟sdfsdfsdfsdfsdfsdfsdfsdfsdffd藏</span></div>
+                <div>
+                    <span><i class="icon iconfont icon-eye1"></i>356</span>
+                    <span><i class="icon iconfont icon-message"></i>56</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <img src="images/art_15.jpg" alt="">
+            <div class="message">
+                <h4>背后插刀耍心机争姑娘？至上励合恩怨大起底</h4>
+                <div class="iconf">
+                    <div><span><i class="icon iconfont icon-clock"></i>1小时前收藏</span></div>
+                    <div>
+                        <span><i class="icon iconfont icon-eye1"></i>254</span>
+                        <span><i class="icon iconfont icon-message"></i>26</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <img src="images/art_17.jpg" alt="">
+            <div class="message">
+                <h4>马雪阳否认落井下石汉化李茂：你就善良？</h4>
+                <div class="iconf">
+                    <div><span><i class="icon iconfont icon-clock"></i>06-17 12:30 收藏</span></div>
+                    <div>
+                        <span><i class="icon iconfont icon-eye1"></i>2654</span>
+                        <span><i class="icon iconfont icon-message"></i>35</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <div class="column">
+            <h2>为什么说电竞已经成为一种营销利器？</h2>
+            <div class="imgcol">
+                <img src="images/art_06.jpg" alt="">
+                <img src="images/art_08.jpg" alt="">
+                <img src="images/art_10.jpg" alt="">
+            </div>
+            <div class="iconf">
+                <div>
+                    <span>老道消息</span>
+                    <span><i class="icon iconfont icon-clock"></i>30分钟sdfsdfsdfsdfsdfsdfsdfsdfsdffd藏</span></div>
+                <div>
+                    <span><i class="icon iconfont icon-eye1"></i>356</span>
+                    <span><i class="icon iconfont icon-message"></i>56</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+<script>
+    document.documentElement.style.fontSize = innerWidth / 15 + "px"
+
+</script>
+
+</html>

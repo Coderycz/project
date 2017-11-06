@@ -1,0 +1,111 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+#container{
+	width: 200px;
+	float: left;
+		
+}
+.part{
+	
+	width: 200px;
+	background: gray;
+	border: 1px solid red;
+	
+
+}
+.part h3{
+	text-align: center;
+	background: green;
+}
+
+.part ul{
+	margin-left: 30px;
+	overflow: hidden;
+	display: none;
+	list-style: outside none none;
+} 
+.show{
+	height: 120px;
+	display: block;
+}
+#start{
+	//z-index:2;
+	float: left;
+	cursor: pointer;
+	position: relative;
+}
+img{
+	vertical-align: middle;
+	
+}
+#start span{
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	border: 1px orange solid;
+	width: 50px;
+	height: 50px;
+	display: none;
+	background: rgba(0,0,255,0.3);
+	
+}
+#big{
+	float: left;
+	display: none;
+	width: 240px;
+	height: 240px;
+	overflow: hidden;
+	position: relative;
+z-index:1;
+}
+#large{
+	position: absolute;	
+	
+}
+#hand{
+	margin: 0 auto;
+	width: 1020px;
+	overflow: hidden;
+}
+#hand ul{
+	width: 99999px;
+	height: 354px;
+	transition: all 0.3s;
+
+}
+#hand li{
+	float: left;
+	width: 197px;
+	height: 354px;
+	list-style: none;
+	position: relative;
+	transition: all 0.3s;
+}
+#hand ul:hover li{
+	width: 38px;
+}
+#hand ul li:hover{
+	width: 868px;
+}
+#hand span{
+	width: 38px;
+	height: 354px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: red;
+	font-size: 32px;
+	padding-top: 100px;
+
+}
+#hand img{
+	position: absolute;
+	left: 38px;
+	top: 0;
+}
+#hand .green span{
+	background: green;
+}

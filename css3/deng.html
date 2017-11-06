@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>舞台</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.stage{
+			//width: 1920px;
+			height: 1080px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: url(3d/0.jpg) round;
+			perspective: 800px
+		}
+		ul{
+			width: 400px;
+			height: 400px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			transform-style: preserve-3d;
+			transform: rotateY(180deg);
+			transition: all 1s linear;
+			animation: move 15s linear infinite;
+		}
+		li{
+			list-style: none;
+			position: absolute;
+			bottom: 0;				
+		}
+		
+		img{
+			width: 230px;
+			border:5px solid pink;
+			//margin-bottom: 80px;
+			-webkit-box-reflect:below 5px linear-gradient(to bottom,transparent 50%,white 100%)
+			/* -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.5, transparent), to(red)) */		
+		}	
+		@keyframes move{
+			0%{
+				transform: rotateX(20deg) rotateY(0deg) rotateZ(0deg);
+			}
+			
+			50%{
+				transform:  rotateX(-20deg) rotateY(180deg) rotateZ(0deg)
+			}
+			
+			100%{
+				transform: rotateX(20deg) rotateY(360deg) rotateZ(0deg)
+			}
+		}
+
+
+		/* li:after{
+			content:"";
+			display: block;	
+			width: 240px;
+			height: 200px; 
+			-moz-transform: scaleY(-1);
+			background-image: linear-gradient(to bottom,transparent 50%,white 100%);
+		}
+		li:nth-child(1):after{
+			background: -moz-element(#box3) no-repeat;
+		}
+		#box2:after{
+			background: -moz-element(#box2) no-repeat;
+		}
+		li:nth-child(3):after{
+			background: -moz-element(#box3) no-repeat;
+		}
+		li:nth-child(4):after{
+			background: -moz-element(#box4) no-repeat;
+		}
+		li:nth-child(5):after{
+			background: -moz-element(#box5) no-repeat;
+		}
+		li:nth-child(6):after{
+			background: -moz-element(#box6) no-repeat;
+		}
+		 */
+
+		li:nth-child(1){
+			transform: rotateY(0deg) translateZ(301px);		 
+		}
+		
+		li:nth-child(2){
+			transform:   rotateY(60deg) translateZ(301px);
+		}
+		li:nth-child(3){
+			transform: rotateY(120deg) translateZ(301px);
+		}
+
+		li:nth-child(4){
+			transform:   rotateY(180deg) translateZ(301px);
+		}
+		li:nth-child(5){
+			transform:   rotateY(240deg) translateZ(301px);
+		}
+		li:nth-child(6){
+			transform:   rotateY(300deg) translateZ(301px);
+		}
+		ul:hover{
+			animation-play-state: paused;
+		}
+	</style>
+	<script>
+		/* $(function(){
+			var height = $(window).height()
+			var width = $(window).width()
+			var x1,x2,y1,y2,x3,y3 = 0
+			$(window).mousedown(function(e){
+				x1 = e.clientX
+				y1 = e.clientY
+				$(window).mousemove(function(e){
+					x2 = e.clientX
+					y2 = e.clientY
+					//var scale = parseInt(y2)/height
+					if(y2<height/2){
+						var degx =90- 180*y2/height
+					}else{
+						var degx = -180*(y2-height/2)/height
+					}
+					var degy = 360*x2/width;
+					console.log(degx)
+					$("ul").css("transform","rotateX("+degx+"deg) rotateY("+degy+"deg)")
+					//console.log(x2) rotateY("+(x1-x2)/5+"deg)"
+				})	
+			})
+			$(window).mouseup(function(e){
+				$(window).off('mousemove');		
+			})
+			
+		}) */
+	</script>
+</head>
+<body>
+<div class="stage">
+	<ul class="container">
+		<li id="box1"><a href="http://www.baidu.com"><img src="3d/1.jpg" alt=""></a></li>
+		<li id="box2"><a href="http://www.baidu.com"><img src="3d/2.jpg" alt=""></a></li>
+		<li id="box3"><a href="http://www.baidu.com"><img src="3d/3.jpg" alt=""></a></li>
+		<li id="box4"><a href="http://www.baidu.com"><img src="3d/4.jpg" alt=""></a></li>
+		<li id="box5"><a href="http://www.baidu.com"><img src="3d/5.jpg" alt=""></a></li>
+		<li id="box6"><a href="http://www.baidu.com"><img src="3d/6.jpg" alt=""></a></li>		
+	</ul>
+</div>
+</body>
+</html>

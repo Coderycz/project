@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+	<style>
+	body{
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+
+}
+#box{
+	width: 600px;
+	height: 600px;
+	margin: 0 auto;
+	border: 2px solid red;
+}
+#panel{
+	width: 200px;
+	height: 600px;
+	background: #ddd;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+#start{
+	width: 200px;
+	height: 150px;
+	padding:30px 0;
+	background: #eee;
+}
+#start input{
+	display: block;
+	width: 100px;
+	height: 30px;
+	font-size: 20px;
+	margin: 30px auto;
+	border-radius: 5px;
+	border: 1px red solid;
+
+}
+#scroes{
+	padding: 20px;
+	font-size: 40px;
+}
+#diffculty{
+	width: 300px;
+	height: 300px;
+	z-index: 10;
+	display: block;
+	background: gray;
+	position: fixed;
+	top: 100px;
+	left: 300px;
+}
+#diffculty p{
+	font-size: 25px;
+	text-align: center;e
+}
+#diffculty input{
+	display: block;
+	width: 80px;
+	height: 30px;
+	font-size: 20px;
+	margin: 30px auto;
+	border: 1px red solid;
+
+}
+	</style>
+</head>
+<body>
+	<div id = 'box'>
+		<canvas id = "canvas" width= "600px" height = "600px"></canvas>
+	</div>
+	<div id = "panel">
+		<div id = "start">
+			<input type="submit" name = "start" id="start1" value = "开始游戏" onclick= "start()">
+			<input type="submit" name = "end" value = "暂停" onclick= "end()">
+		</div>
+		
+
+		<div id = "scroes">分数:<span id = "scroe"></span></div>
+	</div>
+	<div id = "diffculty">
+		<p>请选择游戏难度</p>
+		<input type="submit" name = "speed" id= "speed1" value = "地狱" onclick= "fast()">
+		<input type="submit" name = "speed" id= "speed2" value = "人间" onclick= "common()">
+		<input type="submit" name = "speed" id= "speed3" value = "天堂" onclick= "slow()">
+	</div>
+
+
+	<script type="text/javascript">
+		function start(){
+			document.getElementById("start1").setAttribute('disabled','disabled');
+			document.getElementById("start1").blur();
+			//clearInterval(timer);
+			timer = setInterval(move,t)		  	
+		}
+
+		function end(){
+			document.getElementById("start1").removeAttribute('disabled');
+			clearInterval(timer);
+			
+			//alert("得分：");
+		}
+		function fast(){
+			t = 150;
+			document.getElementById("diffculty").style.display = "none";
+		}
+		function common(){
+			t = 300;
+			document.getElementById("diffculty").style.display = "none";			
+		}
+		function slow(){
+			t = 450;
+			document.getElementById("diffculty").style.display = "none";	
+		}
+		function scroe(){
+			var scroe = document.getElementById('scroe');
+			scroe.innerHTML = count -3			
+		}
+		document.getElementById('panel').style.left = (getInner().width-600)/2+602+'px'
+		document.getElementById('diffculty').style.top = (getInner().height-300)/2+'px'
+		document.getElementById('diffculty').style.left = (getInner().width-400)/2+'px'
+		window.onresize = function(){
+			document.getElementById('panel').style.left = (getInner().width-600)/2+600+'px'
+			document.getElementById('diffculty').style.top = (getInner().height-300)/2+'px'
+			document.getElementById('diffculty').style.left = (getInner().width-400)/2+'px'
+		}
+		function getInner(){
+			if(typeof window.innerWidth != 'undefined'){
+				// for FF  chrome
+				return{
+				width:window.innerWidth,
+				height:window.innerHeight
+				}
+			}else{
+				// for IE  chrome
+				return{
+				width:document.documentElement.clientWidth,
+				height:document.documentElement.clientHeight
+				}
+			}
+		};
+	</script>
+		
+	<script>
+	var canvas = document.getElementById('canvas');
+	var ctx = canvas.getContext('2d');
+	var count = 3;
+	var snake = [];
+	var	foodX= 161;
+	var foodY= 121;
+	var t = 300;
+	var timer;
+	var headX= Math.floor(Math.random()*3+3)*40+1;
+	var headY= Math.floor(Math.random()*3+3)*40+1;
+	var direction = Math.floor(Math.random()*3)+38;
+	
+	
+	for(var i =0;i < count; i++){
+		/*switch(direction){
+			case 37:
+				snake[i]={x:headX+i*40,y:headY};
+				break;
+			case 38:
+				snake[i]={x:headX,y:headY-i*40};
+				break;
+			case 39:
+				snake[i]={x:headX-i*40,y:headY};
+				break;
+			case 40:
+				snake[i]={x:headX,y:headY+i*40};
+				break;
+		}*/
+		//console.log(snake[0].x+" "+snake[0].y)
+		snake[i]={x:headX-i*40,y:headY};
+	}
+
+	//加载完成后绘制背景（网格线），食物，设置定时器
+	
+			drawbg()
+			drawsnake()
+			drawFood()
+
+	//蛇的移动
+	function move(){
+		eat()
+		drawFood()
+		if(gameOver()){
+			window.location.reload();
+			return;
+		}else{
+			drawsnake()
+			scroe()
+		}	
+		
+		//console.log(t)
+		//console.log(count);
+			
+		
+	}
+//网格线绘制
+	function drawbg(){
+		ctx.strokeStyle = 'gray';
+		ctx.lineWidth = '2';
+		for(var i = 0; i<600;i+=40){
+			ctx.moveTo(0,i);
+			ctx.lineTo(600,i)
+			ctx.moveTo(i,0);
+			ctx.lineTo(i,600)
+			ctx.stroke()
+		}	
+	}
+//食物的绘制
+	function drawFood(){
+		
+		foodInsnake();
+		ctx.fillStyle = 'red' ;
+		ctx.fillRect(foodX,foodY,38,38)
+	}
+//判断食物是否在蛇的身体中若在，则重新随机生成一个食物
+	function foodInsnake(){
+		for(var i =0 ;i<snake.length ;i++){
+			if(foodX == snake[i].x && foodY ==snake[i].y){
+				
+				foodX= Math.floor(Math.random()*15)*40+1;
+				foodY= Math.floor(Math.random()*15)*40+1;
+			}
+		}
+	}
+	
+//绘制蛇（头部添加，尾部删除以实现蛇的“移动”）
+	function drawsnake(){
+		
+		//在头部添加一个单位
+	
+		switch(direction){
+				case 37:    //按左键，x坐标减一个单位
+					snake.unshift({x:snake[0].x-40,y:snake[0].y})
+					break;
+				case 38:    //按上键，x坐标减一个单位
+					snake.unshift({x:snake[0].x,y:snake[0].y-40})
+					break;
+				case 39:    //按右键，x坐标加一个单位
+					snake.unshift({x:snake[0].x+40,y:snake[0].y})
+					break;
+				case 40:    //按下键，x坐标减一个单位
+					snake.unshift({x:snake[0].x,y:snake[0].y+40})
+					break;
+				default:
+					break;
+			}
+			//遍历并绘制蛇身
+				
+			for(var i = 1; i < count; i++){
+				ctx.fillStyle = 'green';
+				ctx.fillRect(snake[i].x,snake[i].y,38,38);
+			}
+			ctx.fillStyle = 'blue';
+				ctx.fillRect(snake[0].x,snake[0].y,38,38);
+				//console.log(snake[0].x+" "+snake[0].y)
+			//如果头不在食物处尾巴减掉并将其在画布上进行清除
+			if(!(snake[0].x==foodX && snake[0].y==foodY)){
+				var deletes =snake.pop();
+				ctx.clearRect(deletes.x,deletes.y,38,38)
+			}
+
+		
+	}
+//获取蛇的移动方向
+	document.onkeydown= function(event){
+			var e =event ||window.event;
+			var newdirection=37;
+			switch(e.keyCode){
+				case 37:
+					newdirection = 37
+					break;
+				case 38:
+					newdirection = 38
+					break;
+				case 39:
+					newdirection = 39
+					break;
+				case 40:
+					newdirection = 40
+					break;
+			}
+			//如果获取的方向与正在移动的方向反向就不返回
+			//若不反向则获取新获得的方向值
+			if(Math.abs(newdirection-direction) == 2){
+				return;
+			}else{
+				direction = newdirection;
+				return direction;
+			}
+		}
+//若头吃到食物，蛇长度加一，并重新进行食物的绘制	
+	function eat(){
+		if(snake[0].x==foodX && snake[0].y==foodY){
+			count = count+1;
+			foodX= Math.floor(Math.random()*15)*40+1;
+			foodY= Math.floor(Math.random()*15)*40+1;
+			drawFood();			
+		}
+		//console.log(count+ "   "+  snake.length)
+	}
+//得到下一步的x,y坐标，用于判断蛇头是否将要撞墙或是吃到自己
+	function next(){
+		var next = {};
+		switch(direction){
+				case 37:
+					snake.unshift({x:snake[0].x-40,y:snake[0].y})
+					break;
+				case 38:
+					snake.unshift({x:snake[0].x,y:snake[0].y-40})
+					break;
+				case 39:
+					snake.unshift({x:snake[0].x+40,y:snake[0].y})
+					break;
+				case 40:
+					snake.unshift({x:snake[0].x,y:snake[0].y+40})
+					break;
+				default:
+					break;
+			}
+			next = snake.shift();
+			//返回一个包含x,y的坐标的对象
+			return {
+				x: next.x,
+				y: next.y
+			};
+	}
+//判断游戏结束
+	function gameOver(){
+		var flag = false;
+		//下一步x,y是否会到达边界
+		if(next().x<1 || next().x >561 || next().y<1 || next().y>561){
+			alert('撞墙游戏结束，得分：'+(count-3));
+			flag = true;
+			//window.location.reload();
+		}	
+		//如果在一个定时器周期中连续按两个方向可能会反向
+		//若果反向就将当前方向再次反向，从而回到原方向
+		if(snake[1].x == next().x && snake[1].y == next().y){
+			if(direction<=38)
+				direction =direction+2;
+			else direction = direction-2;	 	
+		}
+		//是否撞自己
+		for(var i = 0; i < count; i++){ 
+			if(snake[i].x == next().x && snake[i].y == next().y){
+				console.log(snake[i].x +"=="+next().x)
+			 	console.log("y"+snake[i].y + "==" + next().y)
+				alert('撞自己游戏结束，得分：'+(count-3))
+				flag = true;
+				//window.location.reload();
+			}
+		}
+		return flag;
+	}
+	</script>
+</body>
+</html>

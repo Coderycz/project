@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>时钟</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style>
+		.container{
+			width: 500px;
+			height: 500px;
+			position: relative;
+		}
+		.panle{
+			position: absolute;
+			width: 500px;
+			height: 500px;
+			//border: 1px solid red;
+			background: url("3D转换/time.jpg") 0px 1px;
+		}
+		.dot{
+			position: absolute;
+			top: 250px;
+			left: 250px;
+			transform: translate(-50%,-50%);
+			width: 24px;
+			height: 24px;
+			border-radius: 50%;
+			background: yellow;
+		}
+		.point{
+			position: absolute;
+			transform-origin: bottom;	
+			border-radius: 14px;
+						
+		}
+		.timenew{
+			width: 500px;
+			height: 30px;
+			text-align: center;
+			line-height: 30px;
+			color: orange;
+			font-size: 25px;
+		}
+		.hour{
+			top: 150px;
+			left: 240px;
+			width: 20px;
+			height: 100px;
+			background: black;				
+		}
+		.minte{	
+			top: 110px;	
+			left: 242px;
+			width: 16px;
+			height: 140px;
+			background: black;
+			
+			
+		}
+		.sec{	
+			top: 60px;	
+			left: 245px;		
+			width: 10px;
+			height: 240px;	
+			background: red;
+			transform-origin:5px 190px;	
+		}
+	</style>
+	<script>
+		$(function(){		
+			var hpoint = $(".hour")
+			var mpoint = $(".minte")			
+			var cpoint = $(".sec")
+			var timenew = $(".timenew")
+			function test(data){
+				if(data<10){
+					data="0"+data
+				}
+				return data
+			}
+			function times(){
+				var time = new Date()	
+				var hour = 0		
+				var hour1 = time.getHours()
+				var min = time.getMinutes()
+				var sec = time.getSeconds()
+					if(hour>=12){
+						hour = hour1-12
+					}else{
+						hour = hour1
+					}
+				//	console.log(hour+"--"+min+"__"+sec)	
+				hpoint.css("transform","rotateZ("+(30*hour+0.1*min)+"deg)")
+				mpoint.css("transform","rotateZ("+(6*min+0.1*sec)+"deg)")
+				cpoint.css("transform","rotateZ("+6*sec+"deg)")
+				timenew.html("北京时间:"+test(hour1)+":"+test(min)+":"+test(sec))
+			}
+			times()
+			setInterval(times,500)			
+		})
+		
+	</script>
+</head>
+<body>
+	<div class="timenew"></div>
+	<div class="container">
+		<div class="panle"></div>
+		<div class="point hour"></div>
+		<div class="point minte"></div>
+		<div class="point sec"></div>
+		<div class="dot"></div>
+	</div>
+</body>
+</html>

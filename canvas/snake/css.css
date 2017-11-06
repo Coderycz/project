@@ -1,0 +1,64 @@
+body{
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+
+}
+#box{
+	width: 600px;
+	height: 600px;
+	margin: 0 auto;
+	border: 2px solid red;
+}
+#panel{
+	width: 200px;
+	height: 600px;
+	background: #ddd;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+#start{
+	width: 200px;
+	height: 150px;
+	padding:30px 0;
+	background: #eee;
+}
+#start input{
+	display: block;
+	width: 100px;
+	height: 30px;
+	font-size: 20px;
+	margin: 30px auto;
+	border-radius: 5px;
+	border: 1px red solid;
+
+}
+#scroes{
+	padding: 20px;
+	font-size: 40px;
+}
+#diffculty{
+	width: 300px;
+	height: 300px;
+	z-index: 10;
+	display: block;
+	background: gray;
+	position: fixed;
+	top: 100px;
+	left: 300px;
+}
+#diffculty p{
+	font-size: 25px;
+	text-align: center;e
+}
+#diffculty input{
+	display: block;
+	width: 80px;
+	height: 30px;
+	font-size: 20px;
+	margin: 30px auto;
+	border: 1px red solid;
+
+}

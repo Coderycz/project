@@ -1,0 +1,252 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	letter-spacing: 2px;
+	
+}
+abbr,article,aside,audio,canvas,datalist,details,dialog,eventsource,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,time,video{display:block}
+header{
+	width: 100%;
+	
+	
+}
+body{
+	background-color:#eee;
+}
+header .htp{
+	background-color: gray;
+}
+header #logo h1{
+	
+	height: 50px;
+	display: inline-block;
+	float: left;
+	text-indent: -99999px;
+}
+header #logo img{
+	width: 100px;
+	height: 50px;
+	float: left;
+}
+
+.g-center{
+	margin: 0 auto;
+	max-width: 1200px;
+	min-width: 900px;
+	height: 50px;
+	
+}
+header #search{
+	width: 350px;
+	height: 50px;
+	margin-left: 150px;
+	float: left;
+	
+	padding: 0;
+	
+	
+}
+header #search .search{
+	width: 240px;
+	height: 38px;
+	line-height: 38px;
+	border-radius: 5px;
+	vertical-align: middle;
+	text-indent: 20px;
+	letter-spacing: 2px;
+
+}
+header #search .button{
+	width: 80px;
+	height: 38px;
+	margin: 5px 0;
+	padding: 0;
+	vertical-align: middle;
+	font-size: 18px;
+	
+	border-radius: 5px;
+	background: url(../img/search.png) no-repeat  center left;
+	background-color: orange;
+	cursor: pointer;
+
+	
+}
+header #login{
+	width: 270px;
+	height: 50px;
+	font-size: 18px;
+	letter-spacing:2px;
+	line-height: 50px;
+	color: blue;
+	float: right;
+	text-align: center;
+}
+
+header #login li.t1{
+	width: 70px;
+}
+header #login li.t2{
+	width: 70px;
+}
+ header #login li:hover{
+	background: #000;
+	cursor: pointer;
+} 
+#menber{
+	width: 130px;
+	position: relative;
+
+}
+#menber ul{
+	width: 130px;
+	height: 0px;
+	position: absolute;
+	background: red;
+	display: none;
+	overflow: hidden;
+
+}
+#menber ul li{
+	width: 130px;
+	height: 30px;
+	line-height: 30px;
+	clear: right;
+}
+#bgimg{
+	width: 100%;
+	height: 200px;
+	min-width: 900px;
+	
+	margin: 0 auto;
+	/* 作为背景引入貌似可以动态的改变（不会对图片进行缩放，
+	只是动态的改变他的位置），直接在html加<img>标签就会订死（会缩放，改变图片分辨率）; */
+	background:linear-gradient(to right bottom, rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0)), url("../img/复仇者.jpg") center no-repeat;
+
+}
+/* #banner img{
+	width: 100%;
+	min-width: 1200px;
+	height: 200px;
+	margin: 0 auto;
+} */
+header nav{	
+	
+	height: 50px;
+	border: 1px solid blue;
+	box-sizing: border-box;
+	border-radius: 8px;
+	position: relative;
+	
+	
+}
+nav .link{
+	list-style: outside none none;
+	margin-right: 50px;
+	float: left;
+	position: absolute;
+	z-index: 3;
+}
+
+nav .link li {
+	width: 80px;
+	font-size: 20px;
+	line-height: 50px;
+	text-align: center;
+	float: left;
+	
+}
+
+nav .link a{
+	color: #000;
+	display:block;
+	text-decoration: none;
+	
+}
+
+
+nav div{
+	width: 80px;
+	height: 50px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: red;
+	z-index: 1;
+
+}
+.footer{
+	width: 100%;
+	height: 350px;
+	
+}
+
+.f-tp{
+	width: 1200px;
+	height: 200px;
+	background: gray;
+}
+.f-left{
+	width: 400px;
+	height: 200px;
+	border: 1px red solid;
+	float: left;
+	border-right: 1px solid red;
+	padding: 20px 25px 0 25px;
+	
+}
+.f-left hr{
+	margin: 10px 0 20px 0;
+}
+.f-left li{
+	list-style: outside none none;
+	width: 110px;
+	font-size: 15px;
+	line-height: 30px;
+	text-align: left;
+	float: left;
+	
+}
+.f-right{
+	width: 400px;
+	height: 200px;
+	float: left;
+	
+}
+
+
+.f-battom{
+	width: 1200px;
+	height: 150px;
+	padding: 20px 0 0 30px;
+
+	
+}s
+.f-battom .pater{
+	width: 1200px;
+	height: 50px;
+	float: left;
+	border: 1px solid red;
+}
+.f-battom li{
+	list-style: outside none none;
+	width: 285px;
+	font-size: 15px;
+	line-height: 30px;
+	text-align: left;
+	float: left;
+
+}
+
+.f-battom .ck{
+	width: 100%;
+	height: 50px;
+	float: left;
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+	
+
+	
+}

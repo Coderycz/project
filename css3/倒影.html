@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box-reflect img { -webkit-box-reflect: below 0 url(http://cdn.w3cplus.com/sites/default/files/blogs/2014/1405/css-masking.png); box-reflect: below 0 url(http://cdn.w3cplus.com/sites/default/files/blogs/2014/1405/css-masking.png); }
+		 /* //.box-reflect { margin: 10px auto; width: 200px; }  */
+		 #moz-reflect:after { content: ""; display: block; background: -moz-element(#moz-reflect) no-repeat; width: auto; height: 200px; -moz-transform: scaleY(-1); }
+	</style>
+</head>
+<body>
+	<!-- <img src="3D转换/1.jpg" alt=""> -->
+	<div class="box-reflect" id="moz-reflect"><img src="http://cdn.w3cplus.com/sites/default/files/blogs/2014/1405/box-reflect.jpg" alt="" height="200" /></div>
+</body>
+</html>

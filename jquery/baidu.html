@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+
+			.center{
+				position: relative;
+				width: 620px;
+				margin: 50px auto 0;
+			}
+			.kw{
+				position: relative;
+				width: 620px;
+				height: 42px;
+				overflow: hidden;	
+			}
+			.img{
+				width: 270px;
+				height: 129px;
+				margin:  0 auto;
+			}
+			input{
+				width: 500px;
+				height: 20px;
+				padding: 10px 7px;
+				font-size: 16px;
+				outline: none;
+				border:1px solid #ddd;
+			}
+			input:focus{
+				border-color:#3385ff;
+			}
+			.search{
+				display: inline-block;
+				position: absolute;
+				left: 515px;
+				
+				
+				
+				background: #3385ff;
+				
+				
+				border: 1px solid #3385ff;
+			}
+			.search a{
+				display: inline-block;
+				text-decoration: none;
+				line-height: 40px;
+				text-align: center;
+				color: #fff;
+				width: 102px;
+				height: 40px;
+				font-size: 16px;
+				letter-spacing: 1px;
+
+			}
+			.show {
+
+				width: 617px;
+				//border: 1px solid #ccc;
+				border-top: 0;
+				z-index: 69999;
+			}
+			.active{
+				background: #eee;
+			}
+			li{
+				list-style: none;
+				//width: 522px;
+			    color: #000;
+			    font: 14px arial;
+			    height: 22px;
+			    line-height: 22px;
+			    padding: 0 8px;
+			    position: relative;
+			    cursor: default;
+			}
+
+		</style>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript">
+
+			$(function(){
+
+				$.ajax({
+						type:"get",
+						url:"http://toy1.weather.com.cn/search?cityname=澄迈",
+						dataType:"jsonp",
+					//	jsonp:"cb",
+						success:function(data){
+							console.log(data)
+							
+							$.each(data,function(index,value){
+								
+							})
+							
+						}
+					});
+
+
+				$("#txt").keyup(function(e){
+					console.log(e.keyCode)
+					var txt = $("#txt").val();				
+					if(e.keyCode == 40){
+						if($(".show li").hasClass("active")){
+							$(".show .active").next().addClass("active").end().removeClass("active")
+						}else{
+							$(".show li").eq(0).addClass("active")
+						}
+						return
+					}
+					if(e.keyCode == 38){
+						if($(".show li").hasClass("active")){						
+							$(".show .active").prev().addClass("active").end().removeClass("active")
+						}else{
+							$(".show li").eq($(".show li").length-1).addClass("active")
+						}
+						return
+					}
+					if(e.keyCode == 37 ||e.keyCode == 39){
+						return
+					}
+					if($(".show li").hasClass("active") && e.keyCode ==13){
+						
+					}
+					if(e.keyCode ==13){
+						if($(".show li").hasClass("active")){
+							$(".show .active").click()
+						}else{
+							var url = "https://sp0.baidu.com/s?ie=utf-8&wd=";
+							var word = $("#txt").val();					
+							window.location.href = url+word
+						}
+						
+					}
+
+					$.ajax({
+						type:"get",
+						url:"https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+txt,
+						dataType:"jsonp",
+						jsonp:"cb",
+						success:function(data){
+							console.log(data)
+							$(".show ul").empty()
+							if(txt==""){
+								$(".show").css("border",0)
+								return
+							}
+							if(data.s.length == 0){
+								$(".show").css("border",0)
+								return 
+							}
+							
+							$.each(data.s,function(index,value){
+								$(".show ul").append("<li>"+value+"</li>")
+							})
+							$(".show").css("border","1px solid #ccc")
+						}
+					});
+				})
+				$(".show ul").on("mouseover","li",function(){
+					$(this).siblings().removeClass("active")
+					$(this).addClass("active");
+				})
+				$(".show ul").on("click","li",function(){
+					$("#txt").val($(this).text())
+					var url = "https://sp0.baidu.com/s?ie=utf-8&wd=";
+					var word = $("#txt").val();					
+					window.location.href = url+word
+				})
+				$(document).click(function(){
+					$(".show ul").empty();
+					$(".show").css("border",0)
+				})
+
+				$("#txt").click(function(e){
+					e.stopPropagation();
+					//$("#txt").trigger("keyup")
+					$("#txt").keyup()
+				})
+
+				$(".search a").click(function(){
+					var url = "https://sp0.baidu.com/s?ie=utf-8&wd=";
+					var word = $("#txt").val();
+					//window.location.href = "https://www.baidu.com/s?ie=utf-8&wd="+word
+					$(this).attr("href",url+word)
+					alert($(this).attr("href"))
+				})/**/
+				/*
+				https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=%E7%99%BE%E5%BA%A61&callback=jQuery321028678430398254706_1504593145129&_=1504593145130
+				https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=%E7%99%BE%E5%BA%A61
+				
+				*/
+			})
+		</script>
+	</head>
+	<body>
+		<div class=center>
+			<div class="img"><img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" alt="" width="270px"></div> 
+			<div class="kw">
+				<input id="txt" type="text" />
+				<div class="search"><a href="">百度一下</a></div>	
+			</div>
+			<div class="show">
+				<ul></ul>
+			</div>
+		</div>		
+	</body>
+</html>

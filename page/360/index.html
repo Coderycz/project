@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="node_modules/jquery/dist/jquery.js"></script>   
+    <link rel="stylesheet" href="node_modules/fullpage.js/dist/jquery.fullpage.css">
+    <!-- <link rel="stylesheet" href="node_modules/wow.js/css/libs/animate.css"> -->
+    <link rel="stylesheet" href="node_modules/animate.css/animate.css">
+    <!-- <script src="node_modules/wow.js/dist/wow.js"></script> -->   
+    <script src="node_modules/fullpage.js/dist/jquery.fullpage.js"></script>
+
+    <style>
+        
+         #dowebok div:nth-child(1){
+           // background: red;
+         }
+         #dowebok div:nth-child(2){
+            background: green;
+         }
+          #dowebok div:nth-child(3){
+            //background: gray; 
+         }
+          #dowebok div:nth-child(4){
+            background: pink;
+         }
+        .wow1,.dm{
+            width: 150px;
+            height: 150px;
+          background:gray;
+            margin: 0 auto;
+          /* //  opacity: 0;transition: all 2s; */
+        }
+        /* .active .dm{
+            opacity: 1;
+        } */
+    </style>
+</head>
+<body>
+    <div id="dowebok">
+        <div class="section">
+              <div class="wow1 wow rollIn bg-red animated" ></div>  
+              <div class="wow1 wow bounceInDown bg-green animated" data-wow-duration="2s" data-wow-delay="5s"></div>
+           
+            <h3>第一屏</h3>
+        </div>
+        <div class="section">
+            <h3>第二屏</h3>
+        </div>
+        <div class="section">
+            <h3>第三屏</h3>         
+             <div class="dm animated " id="bok">
+                    <h2 class="animated ">文本文件</h2>
+             </div>
+        </div>
+        <div class="section">
+            <h3>第四屏</h3>
+        </div>
+    </div>
+    <script>
+    $(function(){
+
+        
+        $('#dowebok').fullpage({
+            anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'lastPage'],
+            afterLoad: function(anchorLink, index){
+                var loadedSection = $(this);
+                //using index
+                if(index == 3){
+                        
+                }
+                //using anchorLink
+                if(anchorLink == 'secondSlide'){
+                        alert("Section 2 ended loading");
+                }
+            },
+            onLeave: function(inde, nextIndex, direction){
+            var leavingSection = $(this);
+            //after leaving section 2
+            if(inde == 2 &&direction =='down'){
+                $(".dm").addClass("slideInRight")
+                $(".dm h2").addClass("zoomInDown")
+                alert("Going to section 3!");
+            }
+            else if(inde == 3 && direction == 'up'){
+                $(".dm").removeClass("bounce")
+                alert("Going to section 1!");
+            }
+        }
+
+        });
+         //new WOW().init();
+       // wo.init()
+
+         //$('#dowebok').addClass('animated bounce');
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .recommend {
+            width: 100%;
+        }
+
+        .reccon {
+            width: 80%;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -110%);
+        }
+
+        .recommend:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .red {
+            color: red;
+            text-align: center;
+            font-size: 25px;
+        }
+
+        ul {
+            display: inline-block;
+            margin: 0 center;
+            width: 100%;
+            list-style-type: none;
+        }
+
+        li {
+            display: inline-block;
+            float: left;
+            width: 200px;
+            height: 100px;
+            border: 1px solid #38f;
+            margin: 0 5px
+        }
+
+        a {
+            color: #38f;
+            text-decoration: none
+        }
+
+        a:hover {
+            color: #fb6e53
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="reccon">
+            <div class="red">推荐链接</div>
+            <ul class="recommend">
+                <li>
+                    <a href="./vue/muisc/index.html">vue音乐</a>
+                    <p><span>简介：</span>运用vue,vuex,vue-router,vue-recsoure,sass等技术完成的一个音乐app</p>
+                </li>
+                <li>
+                    <a href="./canvas/snake/snake.html">canvas贪吃蛇</a>
+                    <p><span>简介：</span>运用canvas,定时器制作的贪吃蛇小游戏</p>
+                </li>
+                <li>
+                    <a href="./nativejs/index1.html">原生js封装</a>
+                    <p><span>简介：</span>对原生js进行封装,之后调用其api进行页面交互的实现</p>
+                </li>
+                <li>
+                    <a href="./page/360/360borswer.html">360浏览器页面还原</a>
+                    <p><span>简介：</span>对360浏览器页面进行还原，并加入少量css3效果</p>
+                </li>
+
+            </ul>
+        </div>
+        <ul>
+            <li>
+                <a href="./page/index.html">页面还原</a>
+                <p><span>简介：</span>移动端，pc端页面还原</p>
+            </li>
+            <li>
+                <a href="./canvas/index.html">canvas练习</a>
+                <p><span>简介：</span>利用canvas实现贪吃蛇，星空，时钟</p>
+            </li>
+            <li>
+                <a href="./vue/index.html">vue项目</a>
+                <p><span>简介：</span>运用vue框架完成的音乐webapp</p>
+            </li>
+            <li>
+                <a href="./css3/index.html">css3效果</a>
+                <p><span>简介：</span>运用css3完成的各种酷炫个效果</p>
+            </li>
+            <li>
+                <a href="./jquery/index.html">jquery练习</a>
+                <p><span>简介：</span>利用jquery库实现的各种常用效果</p>
+            </li>
+            <li>
+                <a href="./nativejs/index.html">原生js练习</a>
+                <p><span>简介：</span>对原生js进行封装，并利用封装好的api进行页面的交互</p>
+            </li>
+        </ul>
+    </div>
+
+</body>
+
+</html>

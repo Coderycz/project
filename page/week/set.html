@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalabel=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_438243_ukwkfu91r3d0wwmi.css">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: #148ad2;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header img {
+            width: 100%;
+            height: 0.8rem;
+            vertical-align: middle;
+        }
+
+        header div {
+            display: flex;
+            padding: 0 0.5rem;
+            height: 1.8rem;
+            line-height: 1.8rem;
+            font-size: 0.8rem;
+            justify-content: space-between;
+        }
+
+        header div i {
+            font-size: 1rem!important;
+        }
+
+        header div .empty {
+            width: 1rem
+        }
+
+
+        section {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            flex: 1;
+            background: #f4f4f4
+        }
+
+        section ul {
+            margin-top: 0.4rem;
+        }
+
+        section img {
+            width: 1.44rem;
+            height: 1.44rem;
+            border-radius: 50%;
+        }
+
+        section li {
+            padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+            display: flex;
+            font-size: 0.64rem;
+            line-height: 1.32rem;
+            justify-content: space-between;
+            border-top: 1px solid #f4f4f4;
+            background: #fff;
+        }
+
+        section li .right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .down .on {
+            width: 1.5rem;
+            height: 0.8rem;
+            background: #148ad2;
+            border-radius: 0.4rem;
+            position: relative;
+            overflow: hidden;
+            border: 0.01rem solid #148ad2;
+            box-sizing: content-box;
+        }
+
+        .down .on div {
+            width: 1.6rem;
+            height: 0.8rem;
+            background: #ccc;
+            border-radius: 0.4rem;
+            position: absolute;
+            left: 0.7rem;
+            transition: left 0.2s;
+        }
+
+        .down .on span {
+            display: inline-block;
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 0.4rem;
+            background: #fff;
+            position: absolute;
+            left: 0;
+        }
+
+        .bar {
+            height: 0.2rem;
+            width: 6rem;
+            background: #e6e6e6;
+            border-radius: 0.1rem;
+            position: relative;
+        }
+
+        .bar div {
+            height: 0.2rem;
+            width: 3rem;
+            background: #148ad2;
+            border-radius: 0.1rem;
+            position: absolute;
+            left: 0;
+            transition: all 0.2s
+        }
+
+        .bar span {
+            height: 0.5rem;
+            width: 0.5rem;
+            background: #148ad2;
+            border-radius: 50%;
+            position: absolute;
+            top: -0.15rem;
+            left: 2.8rem;
+            cursor: pointer;
+            transition: all 0.2s
+        }
+        .bar1{
+            width: 8rem;
+        }
+        .bar1:before{
+            content: "0";
+            display: block;
+            position: absolute;
+            color: #1489cc;
+            top: 0.1rem;
+            left: 0
+        }
+        .bar1:after{
+            content: "100%";
+            display: block;
+            position: absolute;
+            color: #1489cc;
+            top: 0.1rem;
+            right: 0
+        }
+        .bar2 div{
+            width: 6rem;
+        }
+        .bar2 span{
+            left: 5.8rem;
+        }
+        .self{
+            width: 1.6rem;
+            height: .9rem;
+            border-radius: 0.45rem;
+            background: #148ad2;
+            font-size: 0.5rem;
+            line-height: .9rem;
+            text-align: center;
+            color: #fff;
+            margin-left: 0.4rem; 
+        }
+
+        .version span {
+            font-size: 0.6rem;
+            line-height: 1.32rem;
+            color: #666;
+        }
+
+        .version i {
+            font-size: 0.64rem!important;
+            margin-left: 0.4rem;
+        }
+
+        .button {
+            margin: 2.2rem auto;
+            width: 10rem;
+            height: 1.6rem;
+            background: #148ad2;
+            border: 0;
+            border-radius: 0.2rem;
+            overflow: hidden;
+            text-align: center;
+            line-height: 1.6rem;
+            font-size: .8rem;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <img src="images/per_01.jpg" alt="">
+        <div>
+            <i class="icon iconfont icon-zuoyou1"></i>
+            <span>设置</span>
+            <span class="empty"></span>
+        </div>
+    </header>
+    <section>
+        <ul class="down">
+            <li>
+                <div class="left">仅WIFI下载图片</div>
+                <div class="right">
+                    <div class="on">
+                        <div><span></span></div>
+                    </div>
+            </li>
+            <li>
+                <div class="left">仅WIFI自动播放视频</div>
+                <div class="right">
+                    <div class="on">
+                        <div><span></span></div>
+                    </div>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <div class="left">正文字号</div>
+                <div class="right">
+                    <div class="bar bar1">
+                        <div class="value"></div><span></span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="left">屏幕亮度</div>
+                <div class="right">
+                    <div class="bar bar2">
+                        <div class="value"></div><span></span>
+                    </div>
+                    <div class="self">自动</div>
+                </div>
+            </li>
+            <li>
+                <div class="left">清除缓存</div>
+                <div class="right">
+
+                </div>
+            </li>
+
+        </ul>
+        <ul class="version">
+            <li>
+                <div class="left">版本更新</div>
+                <div class="right"><span>1.0.0</span></div>
+            </li>
+            <li>
+                <div class="left">关于我们</div>
+                <div class="right"><i class="icon iconfont icon-zuoyou"></i></div>
+            </li>
+
+        </ul>
+        <div class="button">退出登录</div>
+    </section>
+
+</body>
+<script>
+    document.documentElement.style.fontSize = innerWidth / 15 + "px"
+    var downimg = document.querySelectorAll(".on")
+    var bar1 = document.querySelector(".bar1")
+    var bar2 = document.querySelector(".bar2")
+    console.log(downimg)
+    function change(ele) {
+        for (var i = 0; i < ele.length; i++) {
+            ele[i].onclick = function () {
+                var left = this.getElementsByTagName("div")[0].style.left
+                if (left == "0rem") {
+                    this.getElementsByTagName("div")[0].style.left = "0.7rem"
+                } else {
+                    this.getElementsByTagName("div")[0].style.left = "0rem"
+                }
+                console.log(left)
+            }
+        }
+    }
+    function bar(ele) {
+
+        var value = ele.querySelector("div")
+        var span = ele.querySelector("span")
+        span.onmousedown = function (ev) {
+            window.onmousemove = function (ev) {
+                ev.stopPropagation()
+                if (ev.clientX - ele.getBoundingClientRect().left < 0) {
+                    span.style.left = - span.offsetWidth / 2 + "px"
+                    value.style.width = 0
+
+                } else if (ev.clientX - ele.getBoundingClientRect().left > ele.offsetWidth) {
+                    span.style.left = ele.offsetWidth - span.offsetWidth / 2 + "px"
+                    value.style.width = ele.offsetWidth + "px"
+
+                } else {
+                    value.style.width = ev.clientX - ele.getBoundingClientRect().left + "px"
+                    span.style.left = ev.clientX - ele.getBoundingClientRect().left - span.offsetWidth / 2 + "px"
+                }
+            }
+        }
+        window.onmouseup= function () {
+            window.onmousemove = null
+        }
+        ele.onclick = function (ev) {
+            console.log(ev.clientX, ele.getBoundingClientRect().left)
+            var movex = ev.clientX - ele.getBoundingClientRect().left
+            span.style.left = movex - span.offsetWidth / 2 + "px"
+            value.style.width = movex + "px"
+        }
+    }
+
+    bar(bar1)
+    bar(bar2)
+    change(downimg)
+
+</script>
+
+</html>

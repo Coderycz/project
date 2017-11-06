@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>圆角</title>
+	<style>
+	.container{
+		position: relative;
+		width: 300px;
+		height: 300px;
+		display: flex;
+		margin: 10px;
+		float: left;
+		border: 1px solid gray;
+	}
+	.container div{
+		position: relative;
+		width: 160px;
+		height: 160px;
+		margin: auto;
+		justify-content: space-between;
+		border: 1px solid red;
+	}
+	
+	.container:nth-child(1) div{
+		width: 0;
+		height: 0;
+		border: 75px solid;
+		border-color: red transparent green yellow ;
+	}
+	.container:nth-child(2) div{
+		width: 0;
+		height: 0;
+		border: 75px solid;
+		border-color: red transparent red red;
+		border-radius: 150px;
+	}
+	.container:nth-child(3) div{
+		width: 0;
+		height: 0;
+		border: 75px solid;
+		border-color: red transparent transparent transparent;
+		border-radius: 150px;
+	}
+	.container:nth-child(4) div{
+		width: 0;
+		height: 0;
+		border: 75px solid;
+		border-color: red red green green;
+		border-radius: 150px;
+		transform: rotate(-45deg);
+		
+	}
+	.container:nth-child(5) div{
+		height: 40px;
+		border-radius: 80px 80px 0 0/40px 40px 0 0;
+	}
+	.container:nth-child(6) div{
+		width: 40px;		
+		border-radius: 40px  0 0 40px/ 80px 0 0 80px;
+	}
+	.container:nth-child(7) div{
+		width: 40px;
+		height: 80px;		
+		border-radius: 40px 0 0 0/ 80px 0 0 0;
+	}
+	.container:nth-child(8) div{
+		height: 80px;
+		border-radius: 80px/40px;
+	}
+	.container:nth-child(9) div{
+		height: 80px;
+		border-radius: 10px;
+		background: red;
+	}
+	.container:nth-child(9) div:before{
+		content: "";
+		display: block;
+		position: absolute;
+		left: -20px;
+		top: 10px;
+		width: 0;
+		height: 0;
+		border: 10px solid;
+		border-color: transparent red transparent transparent;
+	}
+	.container:nth-child(10) div{
+		height: 80px;
+		border-radius: 10px;
+		background: red;
+	}
+	.container:nth-child(10) div:before{
+		content: "";
+		display: block;
+		position: absolute;
+		left: 161px;
+		
+		width: 20px;
+		height: 50px;
+		background: red;
+		border-radius: 0 0 20px 0/0 0 50px 0;
+	}
+	.container:nth-child(10) div:after{
+		content: "";
+		display: block;
+		position: absolute;
+		left: 161px;
+		
+		width: 20px;
+		height: 25px;
+		background: white;
+		border-radius: 0 0 20px 0/0 0 25px 0;
+	}
+	.container:nth-child(11) div{
+		width: 120px;
+		height: 140px;
+		border-radius: 0 0 60px 0/0 0 70px 0 ;
+		background: red;
+	}
+	.container:nth-child(11) div:after{
+		content: "";
+		display: block;
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		right: -1px;
+		top: 40px;
+		border-radius: 0 0 40px 0/0 0 10px 0 ;
+		background: white;		
+	}
+	.container:nth-child(12) div{
+		background: red;
+		//box-sizing: border-box;
+		height: 80px;
+		border-radius: 80px;
+		border: 0;
+		border-bottom: 80px solid green;
+	}
+	.container:nth-child(12) div:before{
+		content: '';
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 40px;
+		width: 20px;
+		height: 20px;
+		background: green;
+		border: 30px solid red;
+		border-radius: 40px;	
+	}
+	.container:nth-child(12) div:after{
+		content: '';
+		display: block;
+		position: absolute;
+		right: 0;
+		top: 40px;
+		width: 20px;
+		height: 20px;
+		background: red;
+		border: 30px solid green;
+		border-radius: 40px;	
+	}
+	.container:nth-child(13) div{
+		border: 0;
+		width: 80px;
+		height: 80px;
+		background: red;
+		transform: rotate(45deg);
+		//border-radius: 40px 40px 0 0;
+	}
+	.container:nth-child(13) div:before{
+		content: "";
+		display: block;
+		position:absolute;
+		top: -40px;
+		width: 80px;
+		height: 40px;
+		background: red;
+		border-radius: 40px 40px 0 0;
+	}
+	.container:nth-child(13) div:after{
+		content: "";
+		display: block;
+		position:absolute;
+		left: -40px;
+		width: 40px;
+		height: 80px;
+		background: red;
+		border-radius: 40px  0 0 40px;
+	}
+
+	.container:nth-child(14) div{
+		//border: 0;
+		width: 40px;
+		height: 40px;
+		border-width: 0 0 20px 10px;
+		border-color: red;
+		border-radius:  0 0 60px 0;
+	}
+
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+		
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+</body>
+</html>

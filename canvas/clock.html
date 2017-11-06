@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript">
+	function startTime()
+	{
+		var today=new Date()
+		var h=today.getHours()
+		var m=today.getMinutes()
+		var s=today.getSeconds()
+	// add a zero in front of numbers<10
+		m=checkTime(m)
+		s=checkTime(s)
+		document.getElementById('txt').innerHTML="北京时间："+h+":"+m+":"+s
+		t=setTimeout(arguments.callee,500)
+		//t=setTimeout("startTime()",500)
+	}
+
+	function checkTime(i)
+	{
+		if (i<10) 
+			  {i="0" + i}
+			  return i
+		}
+</script>
+</head>
+<body onload="startTime()">
+
+	<div id="txt">
+	</div>
+	<div>
+		<canvas id="myCanvas" width="200" height="
+		200" style="border:1px solid #d3d3d3;">
+		Your browser does not support the HTML5 canvas tag.
+		</canvas>
+	</div>
+
+<script>
+
+	var c=document.getElementById("myCanvas");
+	var ctx=c.getContext("2d");
+	width=ctx.canvas.width;
+	height=ctx.canvas.height;
+	var r=width/2;
+	var m = width/300;
+
+function drawBackground() {
+	ctx.save();
+	ctx.translate(r,r);
+	ctx.lineWidth=10*m;
+	ctx.beginPath();
+	ctx.arc(0,0,r-5*m,0,2*Math.PI,false);
+	ctx.stroke();
+
+	var hourNumber=[3,4,5,6,7,8,9,10,11,12,1,2];
+	ctx.font = "25px Arial";
+	ctx.textAlign = "center";
+	ctx.textBaseline = "middle";
+	hourNumber.forEach(function (number ,i) {
+		var rad=2*Math.PI/12*i;
+		var x = Math.cos(rad)*(r-30*m);
+		var y = Math.sin(rad)*(r-30*m);
+		ctx.fillText(number,x,y);
+	})
+	for(var i= 0; i < 60; i++ ){
+		var rad = 2* Math.PI/60 * i;
+		var x = Math.cos(rad) * (r-18*m);
+		var y = Math.sin(rad) * (r-18*m);
+		ctx.beginPath();
+		if (i%5===0) {
+			ctx.arc( x, y, 4*m, 0, 2 * Math.PI, false);
+		}else{
+			ctx.arc( x, y, 2*m, 0, 2 * Math.PI, false);
+		}
+	
+		ctx.fill();
+		
+	}
+}
+	function drawHour(hour,    minute){
+		ctx.save();
+		ctx.beginPath();
+		var rad = 2 * Math.PI/12 * hour;
+		var mrad = 2 * Math.PI/12 /60* minute ;
+		ctx.rotate(rad+mrad);
+		ctx.lineCap="round";
+		ctx.lineWidth = 10*m;
+		ctx.moveTo(0, 10*m);
+		ctx.lineTo(0, -r/2);
+		ctx.stroke();
+		ctx.restore();
+
+	}
+		function drawMinute(minute){
+		ctx.save();
+		ctx.beginPath();
+		var rad = 2 * Math.PI/60 * minute;
+		ctx.rotate(rad);
+		ctx.lineCap="round";
+		ctx.lineWidth = 6*m;
+		ctx.moveTo(0, 10*m);
+		ctx.lineTo(0, -r/2-10*m);
+		ctx.stroke();
+		ctx.restore();
+
+	}
+		function drawSecond(second){
+		ctx.save();
+		ctx.beginPath();
+		ctx.fillStyle="red";
+		var rad = 2 * Math.PI/60 * second;
+		ctx.rotate(rad);
+		
+		ctx.moveTo(-2*m, 20*m);
+		ctx.lineTo(2*m , 20*m);
+		ctx.lineTo(1*m,-r+20*m);
+		ctx.lineTo(-1*m , -r+20*m);
+		ctx.fill();
+		ctx.restore();
+
+	}
+		function drawDot() {
+			ctx.beginPath();
+			ctx.fillStyle="#FFF";
+			ctx.arc(0, 0, 4*m, 0, 2*Math.PI, false );
+			ctx.fill();
+
+
+		}
+
+
+
+function draw() {
+		ctx.clearRect(0, 0, width, height );
+	var t= new Date();
+	var hour =t.getHours();
+	var minute = t.getMinutes();
+	var second = t.getSeconds(); 
+	drawBackground();
+	drawHour(hour , minute);
+
+	drawMinute(minute);
+	drawSecond(second);
+		ctx.restore();
+
+
+}
+draw();
+
+setInterval( "draw()", 500);
+</script>  
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>放大镜</title>
+  
+    <style>
+        * {margin: 0;padding: 0;}
+        .box {
+            width: 350px;
+            height: 350px;
+            margin:100px;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+        .big {
+            width: 228px;
+            height: 228px;
+           display: none;
+            position: absolute;
+            top: 0;
+            left: 360px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+        .mask {
+            width: 100px;
+            height: 100px;
+            display: none;
+            //background: red;
+            background: rgba(255, 255, 0, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: move;
+        }
+        .small {
+           // overflow: hidden;
+            height: 350px;
+            position: relative;
+           
+        }
+        .move{
+            position: absolute;
+            left: -200px;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="box">
+    <!--小盒子-->
+    <div class="small">
+        <img src="images/001.jpg" alt=""/>
+        <div class="mask"></div>
+    </div>
+    <div class="big">
+        <img class="move" src="images/0001.jpg" alt=""/>
+    </div>
+</div>
+<script>
+    $(function(){
+        $(".small").hover(function(){
+            $(".mask").css("display","block")
+            $(".big").css("display","block")
+        },function(){
+            $(".mask").css("display","none")
+            $(".big").css("display","none")
+        })
+        
+        $(".small").mousemove(function(e){
+            var maxwidth = $(".small").innerWidth()-$(".mask").innerWidth()
+            var maxheight = $(".small").innerHeight()-$(".mask").innerHeight()
+            //var left = $(".mask").position().left
+            //var top = $(".mask").position().top
+            var left = e.clientX-$(this).offset().left - $(".mask").innerWidth()/2
+            var top = e.clientY-$(this).offset().top - $(".mask").innerHeight()/2
+            //console.log(left+"---"+$(".mask").position().left)
+            if(left <= 0){
+                left = 0;
+            }else if(left >= maxwidth){
+                left = maxwidth
+            }
+            if(top <= 0){
+                top = 0
+            }else if(top >= maxheight){
+                top = maxheight
+            }
+            $(".mask").css({
+                "left": left,
+                "top": top
+            })
+            //$(".mask").css("left",left)
+            //$(".mask").css("top",top)
+            console.log(left)
+
+            var k = $(".mask").innerWidth()/$(".big").innerWidth()
+            $(".move").css("left",-left/k)
+            $(".move").css("top",-top/k)
+            //console.log(k)
+        })
+            
+        
+
+
+    })
+
+</script>
+</body>
+</html>

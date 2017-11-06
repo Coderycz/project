@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	canvas{background-color: gray}
+	</style>
+</head>
+<body>
+<canvas id="canvas" width="1300" height="800">
+</canvas>
+<script type="text/javascript">
+var a=document.getElementById('canvas');
+var c=a.getContext('2d');
+g=c.createRadialGradient(50,300,10,500,700,20);
+h=c.createLinearGradient(200,200,200,600);
+g.addColorStop(0,"#0f0");
+g.addColorStop(1,"#00f");
+c.lineWidth=2;
+c.strokeStyle="red";
+c.fillStyle="#000";
+/*c.moveTo(800,500);
+c.arc(800,500,300,Math.PI*7/6,Math.PI*9/6,false);
+c.fill();
+c.moveTo(800,500);
+c.arc(800,500,300,Math.PI*11/6,Math.PI*9/6,true);
+c.fill();
+c.beginPath();
+c.fillStyle="gray";
+c.moveTo(800,500);
+c.arc(800,500,200,Math.PI*7/6,Math.PI*9/6,false);
+c.fill();
+c.moveTo(800,500);
+c.arc(800,500,200,Math.PI*11/6,Math.PI*9/6,true);
+c.fill();*/
+
+
+
+c.arc(400,400,200,Math.PI*0.5,Math.PI*1.5,false);
+c.fill()
+c.arc(400,500,100,Math.PI*0.5,Math.PI*1.5,true);
+c.fill()
+c.beginPath();
+c.fillStyle="white";
+c.arc(400,400,200,Math.PI*0.5,Math.PI*1.5,true);
+c.fill()
+c.arc(400,300,100,Math.PI*0.5,Math.PI*1.5,false);
+c.fill()
+c.beginPath();
+c.fillStyle="#000";
+c.arc(400,500,100,Math.PI*0.5,Math.PI*1.5,true);
+c.fill();
+c.font="50px 隶书";
+c.fillText("阴",400,300);
+c.font="50px 隶书";
+c.strokeText("阳",400,500)
+c.font="50px 隶书";
+c.strokeText("太极图案 ，以及扇形的绘制",280,100);
+c.fillText("太极图案 ，以及扇形的绘制",280,100);
+//太极图案
+
+
+
+c.beginPath();
+c.moveTo(950,500);
+c.arc(950,500,300,Math.PI*7/6,Math.PI*9/6,false);
+c.fill();
+c.moveTo(950,500);
+c.arc(950,500,300,Math.PI*11/6,Math.PI*9/6,true);
+c.fill();
+c.beginPath();
+c.fillStyle="gray";
+c.moveTo(950,500);
+c.arc(950,500,200,Math.PI*7/6,Math.PI*9/6,false);
+c.fill();
+c.moveTo(950,500);
+c.arc(950,500,200,Math.PI*11/6,Math.PI*9/6,true);
+c.fill();
+//扇面
+</script>	
+
+</body>
+</html>

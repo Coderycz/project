@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>边框图片</title>
+	<style>
+	.container{
+		position: relative;
+		width: 300px;
+		height: 300px;
+		display: flex;
+		margin: 10px;
+		float: left;
+		border: 1px solid gray;
+	}
+	.container div{
+		position: relative;
+		padding: 10px;
+		width: 160px;
+		height: 160px;
+		margin: auto;
+		background: gray;
+		//border: 26px solid;
+		justify-content: space-between;
+		border: 10px  dashed red;
+	}
+	.container:nth-child(1) div{
+		//background: url(images/bg.jpg) no-repeat;
+		background-clip: border-box;
+	}
+	.container:nth-child(2) div{
+		//background: url(images/bg.jpg) no-repeat;
+		background-clip: padding-box;
+	}
+	.container:nth-child(3) div{
+		//background: url(images/bg.jpg) no-repeat;
+		background-clip: content-box;
+	}
+	.container:nth-child(4) div{
+		background: url(images/bg.jpg) no-repeat;
+		background-origin: border-box;
+	}
+	.container:nth-child(5) div{
+		background: url(images/bg.jpg) no-repeat;
+		background-origin: content-box;
+	}
+	.container:nth-child(6) div{
+		background: url(images/bg.jpg) no-repeat;
+		background-origin: padding-box;
+	}
+	.container:nth-child(7) div{
+		background: url(images/2.jpg) no-repeat;
+		background-size:cover;
+	}
+	.container:nth-child(8) div{
+		background: url(images/2.jpg) no-repeat;
+		background-size:contain;
+	}
+
+
+
+
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+		
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+	<div class="container">
+		<div></div>
+	</div>
+</body>
+</html>

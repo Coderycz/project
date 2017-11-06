@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 350px;
+            height: 350px;
+            margin: 100px;
+            position: relative;
+            border: 1px solid #000;
+        }
+        .big{
+            width: 450px;
+            height: 450px;
+            position: absolute;
+            left:352px;
+            top:0px;
+            overflow: hidden;
+            display: none;
+        }
+        span{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background: rgba(555,5,5,.6);
+            position: absolute;
+            top:0px;
+            left: 0;
+            cursor: move;
+            display: none;
+        }
+        .small{
+            position: relative;
+        }
+
+        .big img{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div id="small" class="small">
+        <img src="images/001.jpg" alt="">
+        <span></span>
+    </div>
+    <div id="big" class="big">
+        <img src="images/0001.jpg" alt="">
+    </div>
+
+</div>
+
+
+<script>
+    var box = document.getElementsByTagName("div")[0]
+    var small = document.getElementById("small")
+    var big = document.getElementById("big")
+    var span = small.children[1]
+    var bigImg = big.children[0]
+
+    box.addEventListener("mouseover",fn)
+    box.addEventListener("mouseout",fn1)
+    function fn(){
+        span.style.display = "block"
+        big.style.display = "block"
+    }
+    function fn1(){
+        span.style.display = "none"
+        big.style.display = "none"
+    }
+
+
+    //鼠标移入各随
+    small.onmousemove =  function (e){
+        var e = e ||event
+        //获取移入是坐标，赋值给span
+        var x = e.clientX - this.offsetParent.offsetLeft - span.offsetWidth/2;
+        var y = e.clientY - this.offsetParent.offsetTop - span.offsetHeight/2;
+
+        //由于span会溢出。所以取整
+        if(x<0){
+            x=0
+        }else if(x>box.offsetWidth - span.offsetWidth){
+            x =box.offsetWidth - span.offsetWidth
+        }
+
+        if(y<0){
+            y=0
+        }else if(y>box.offsetHeight - span.offsetHeight){
+            y = box.offsetHeight - span.offsetHeight
+        }
+
+        span.style.left = x +"px";
+        span.style.top = y +"px";
+
+        //bigImg.style.left - 
+        bigImg.style.left = -x * big.offsetWidth/small.offsetWidth +"px"
+        bigImg.style.top = -y * big.offsetHeight/small.offsetHeight+ "px"
+    }
+
+</script>
+</body>
+</html>

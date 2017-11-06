@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>360borswer</title>
+
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" href="node_modules/fullpage.js/dist/jquery.fullpage.css">
+    <!-- <link rel="stylesheet" href="node_modules/wow.js/css/libs/animate.css"> -->
+    <link rel="stylesheet" href="node_modules/animate.css/animate.css">
+    <!-- <script src="node_modules/wow.js/dist/wow.js"></script> -->
+    <script src="node_modules/fullpage.js/dist/jquery.fullpage.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /*  .fp-tableCell,.fp-enabled ,.fp-table,.fp-section,.section,.fullpage ,.fullpage-wrapper{
+            height:767px !important;
+        } */
+
+        a {
+            cursor: pointer
+        }
+
+        .center {
+            position: relative;
+            width: 1160px;
+            height: 767px;
+            margin: 0 auto;
+        }
+
+        .header {
+            height: 80px;
+            width: 1160px;
+            position: relative;
+        }
+
+        .header .logo {
+            display: inline-block;
+            margin-top: 13px;
+            width: 195px;
+            height: 55px;
+        }
+
+        .header .menu {
+            display: inline-block;
+            position: absolute;
+            right: 180px;
+            margin-right: 10px;
+            margin-top: 13px;
+            height: 55px;
+        }
+
+        .header .menu a {
+            display: inline-block;
+            text-decoration: none;
+            height: 20px;
+            margin-right: 32px;
+            margin-top: 15px;
+            color: #777;
+        }
+
+        .header .menu a:hover {
+            color: #37d679;
+        }
+
+        .tabnav {
+            position: absolute;
+            right: 0;
+            margin-top: 26px;
+            display: inline-block;
+            width: 171px;
+            height: 30px;
+            background: url("img/tabtn.png")
+        }
+
+        .tabnav a {
+            display: inline-block;
+            height: 100%;
+            width: 48%;
+            margin: 0!important;
+            padding: 0;
+        }
+
+
+
+        .fullpage {
+            width: 100%;
+        }
+
+        .fullpage .section {
+            position: relative;
+        }
+
+        .txt {
+            background: url(http://p3.qhimg.com/d/inn/040c1d9a/title.gif) no-repeat;
+            width: 657px;
+            height: 310px;
+            margin: 172px auto 0;
+            position: relative;
+        }
+
+        .txt .bro {
+            display: inline-block;
+            width: 304px;
+            height: 130px;
+            margin-top: 158px;
+            margin-right: 15px;
+            margin-left: 168px;
+            cursor: pointer;
+            background: url("img/btn_dl.gif")
+        }
+
+        .txt .down2 {
+            position: absolute;
+            bottom: 63px;
+            right: 148px;
+            color: #888;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 13px;
+        }
+
+        .txt span {
+            display: inline-block;
+            position: absolute;
+            opacity: 1;
+            transition: all 0.7s
+        }
+
+        .txt .left {
+
+            top: -90px;
+            right: -228px;
+            width: 113px;
+            height: 118px;
+            background: url(img/circl_top.jpg) 0 0 no-repeat;
+        }
+
+        .txt .right {
+            left: -225px;
+            top: 260px;
+            width: 313px;
+            height: 308px;
+            background: url(img/circl_left.png) 0 0 no-repeat;
+        }
+
+        .txt .bottom1 {
+            right: -330px;
+            top: 193px;
+            width: 526px;
+            height: 429px;
+            background: url(img/circl_right.png) 0 0 no-repeat;
+        }
+
+        .txt .bottom2 {
+            background: url(img/circl_shadow.png) 0 0 no-repeat;
+            width: 355px;
+            height: 355px;
+            left: -535px;
+            top: -120px;
+        }
+
+        .browser1 {
+            position: relative;
+            height: 520px;
+            top: 0;
+            transition: all 0.8s ;
+        }
+
+        .addanimate {
+            top: 60%;
+        }
+
+        .addanimate .img1 {
+            transform: perspective(875px) rotateX(0deg);
+        }
+
+        .img1 {
+            display: block;
+            position: relative;
+            
+            z-index: 2;
+            width: 956px;
+            height: 520px;
+            margin: 10px auto 0;
+            transition: all 0.8s ;
+            background-size: cover;
+            background: url(img/browser_3_top.png) 0px 0px no-repeat, linear-gradient( to bottom, transparent 50%, white 60%);
+            transform: perspective(875px) rotateX(25deg);
+        }
+
+        .img1 span {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 4;
+            opacity: 0;
+        }
+
+        .img1 span.bskin-1 {
+            background: url(img/skin_2.png) 0px 1px no-repeat
+        }
+
+        .img1 span.bskin-2 {
+
+            background: url(img/skin_1.png) 0px 1px no-repeat
+        }
+
+        .img1 span.bskin-3 {
+            background: url(img/skin_3.png) 0px 1px no-repeat
+        }
+
+        .img1 span.bskin-4 {
+            background: url(img/skin_4.png) 0px 1px no-repeat
+        }
+
+        .browser1 .btop {
+            width: 260px;
+            height: 33px;
+            background: url(img/tab.png) no-repeat;
+            position: absolute;
+            z-index: 3;
+            top: 46px;
+            left: 236px;
+            transition: all 0.8s ;
+        }
+
+        .addanimate .btop {
+            top: 6px;
+            left: 203px
+        }
+
+        .hidden {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 350px;
+            z-index: 5;
+            background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 1) 100%);
+        }
+
+        .litteimg {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 250px;
+            z-index: 4;
+        }
+
+        .litteimg .skin {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            z-index: 4;
+            background: url("img/btn.png") no-repeat;
+        }
+
+        .litteimg .skin-1 {
+            left: 191px;
+            top: 28px;
+            background-position: -88px -160px;
+        }
+
+        .litteimg .skin-2 {
+            left: 373px;
+            top: 28px;
+            background-position: -86px 0px;
+        }
+
+        .litteimg .skin-3 {
+            left: 513px;
+            top: 28px;
+            background-position: -89px -81px;
+        }
+
+        .litteimg .skin-4 {
+            left: 750px;
+            top: 20px;
+            background-position: -88px -241px;
+        }
+        /* 第二版面 */
+        .hei{
+            height: 767px !important;
+        }
+        .content2 {
+            height: 396px;
+            opacity: 1;
+            background: url(img/wzbg.gif) 0px 0 no-repeat;
+            transition: all .75s;
+        }
+
+        .wrap {
+            width: 1000px;
+            height: 617px;
+            margin: -246px auto -278px;
+            position: relative;
+            background: url(img/brwser_bg.png) no-repeat
+        }
+
+        .btmcolor {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 444px;
+            background: linear-gradient(to top, rgba(69, 217, 131, 1) 0, rgba(94, 184, 148, 0.8) 70%, rgba(94, 184, 148, 0) 100%);
+        }
+        /* 第三版面 */
+
+        .bg_top3 {
+            position: absolute;
+
+            width: 100%;
+            height: 500px;
+            z-index: -2;
+            background: rgba(69, 217, 131, 1)
+        }
+
+        .title3 {
+            position: relative;
+            top: 80px;
+            width: 649px;
+            height: 176px;
+            margin: 0 auto;
+            background: url("img/p2_title.png")
+        }
+
+        .computer {
+            position: absolute;
+            background: url(http://p7.qhimg.com/d/inn/e4f5964d/se9/computer.png) no-repeat;
+            width: 646px;
+            height: 400px;
+            left: 50%;
+            margin-left: -490px;
+            margin-top: 90px;
+            transform: perspective(2000px) rotateY(55deg);
+            transform-style: preserve-3d;
+            transition: all 1.2s ;
+        }
+
+        .endc {
+            transform: perspective(2000px) rotateY(0deg);
+        }
+
+        .phone {
+            position: absolute;
+            background: url(http://p6.qhimg.com/d/inn/707c46bc/phone.png) no-repeat;
+            width: 178px;
+            height: 341px;
+            left: 50%;
+            margin: 114px 0 0 296px;
+            transform: perspective(900px) rotateY(-50deg);
+            transform-style: preserve-3d;
+            transition: all 1.2s ;
+        }
+
+        .endp {
+            transform: perspective(900px) rotateY(0deg);
+        }
+        /* 第四版 */
+
+        .bg_4 {
+            background: url(img/safe2.jpg) no-repeat center top;
+            height: 1130px;
+            position: relative;
+            top: 0;
+            width: 100%;
+        }
+
+        .pot {
+            background: url(img/dp.png) no-repeat;
+            width: 151px;
+            height: 166px;
+            position: absolute;
+            top: 524px;
+            left: 50%;
+            margin-left: -75px;
+            z-index: 50;
+        }
+
+        .pointer {
+            background: url(img/rada.png) no-repeat;
+            width: 660px;
+            height: 660px;
+            margin-left: -330px;
+            position: absolute;
+            top: 265px;
+            left: 50%;
+        }
+
+        .child {
+            background: url(img/dp.png) no-repeat;
+            position: absolute;
+            left: 50%;
+            transform: scale(1);
+            transition: all .8s linear;
+        }
+
+        .child-1 {
+            background-position: -180px -17px;
+            width: 49px;
+            height: 49px;
+            margin-left: -112px;
+            top: 317px;
+        }
+
+        .child-2 {
+            background-position: -418px -17px;
+            width: 54px;
+            height: 54px;
+            margin-left: 229px;
+            top: 631px;
+        }
+        /* 第五版 */
+
+        .last {
+            background: linear-gradient(to bottom, rgba(18, 227, 134, 1) 0, rgba(31, 202, 215, 1) 100%);
+        }
+
+        .last_bg {
+            background: url(img/lastbg.png) no-repeat center;
+            height: 676px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cen-1 {
+            background: url(http://p2.qhimg.com/d/inn/930d07b0/circle_1.png) no-repeat center;
+            width: 1140px;
+            height: 466px;
+            margin: 266px auto 0;
+        }
+
+        .cen-2 {
+            position: absolute;
+            background: url(img/circle_2.png) no-repeat;
+            width: 428px;
+            height: 175px;
+            left: 50%;
+            margin-left: -214px;
+            top: 408px;
+        }
+
+        .cen-3 {
+            position: absolute;
+            left: 50%;
+            background: url(img/circle_3.png) no-repeat;
+            width: 458px;
+            height: 187px;
+            margin-left: -229px;
+            top: 350px;
+        }
+
+        .cen-4 {
+            position: absolute;
+            left: 50%;
+            background: url(img/circle_4.png) no-repeat;
+            width: 428px;
+            height: 177px;
+            margin-left: -214px;
+            top: 295px;
+        }
+
+        .cen-5 {
+            position: absolute;
+            left: 50%;
+            background: url(http://p9.qhimg.com/d/inn/9ea3f7c6/circle_5.png) no-repeat;
+            width: 151px;
+            height: 62px;
+            margin-left: -75px;
+            top: 320px;
+        }
+        .cen-6{
+            position: absolute;
+            left: 50%;
+            background: url(img/point_1.png) no-repeat;
+            width: 415px;
+            height: 415px;
+            transition: all 0.3s ease-in-out;
+            transform: rotateX(70deg) rotateZ(-120deg);
+            margin-left: -207px;
+            top: 140px;
+        }
+        .endl{
+            transform: rotateX(70deg) rotateZ(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fullpage">
+        <div class="section hei">
+            <div class="center">
+                <div class="header">
+                    <div class="logo"><img src="img/logo.jpg" alt=""></div>
+                    <div class=menu>
+                        <a href="javascript:;">应用</a>
+                        <a href="javascript:;">皮肤</a>
+                        <a href="javascript:;">帮助</a>
+                        <a href="javascript:;">论坛</a>
+                        <a href="javascript:;">国密专版</a>
+                        <a href="javascript:;">猎网平台</a>
+                        <a href="javascript:;">8.1版本</a>
+                    </div>
+                    <div class="tabnav">
+                        <a href="javascript:;"></a>
+                        <a href="javascript:;"></a>
+                    </div>
+                </div>
+                <div class="txt">
+                    <a class="bro" href="javascript:;"></a>
+                    <a class="down2" href="javascript:;">9.2bate版</a>
+                    <span class="left"></span>
+                    <span class="right"></span>
+                    <span class="bottom1"></span>
+                    <span class="bottom2"></span>
+                </div>
+                <div class="browser1">
+                    <div class="btop"></div>
+                    <div class="img1">
+                        <div class="hidden"></div>
+                        <div class="chose">
+                            <span class="bskin-1"></span>
+                            <span class="bskin-2"></span>
+                            <span class="bskin-3"></span>
+                            <span class="bskin-4"></span>
+                        </div>
+                        <div class="litteimg">
+                            <a class="skin skin-1" href=""></a>
+                            <a class="skin skin-2" href=""></a>
+                            <a class="skin skin-3" href=""></a>
+                            <a class="skin skin-4" href=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section hei">
+            <div class="center">
+                <div class="content2"></div>
+                <div class="wrap">
+                </div>
+            </div>
+            <div class="btmcolor"></div>
+        </div>
+        <div class="section  hei">
+            <div class="bg_top3"></div>
+            <div class="center">
+                <div class="title3"></div>
+                <div class="computer"></div>
+                <div class="phone"></div>
+
+            </div>
+
+        </div>
+        <div class="section  hei">
+            <div class="bg_4">
+                <div class="center">
+                    <div class="wrap4">
+
+                        <div class="pointer"></div>
+                        <div class="pot"></div>
+                        <div class="child child-1"></div>
+                        <div class="child child-2"></div>
+                        <div class="child child-3"></div>
+                        <div class="child child-4"></div>
+                        <div class="child child-5"></div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section hei last">
+            <div class="last_bg">
+                <div class="cen-1"></div>
+                <div class="cen-2"></div>
+                <div class="cen-3"></div>
+                <div class="cen-4"></div>
+                <div class="cen-5"></div>
+                <div class="cen-6"></div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        $(function () {
+            console.log($(".fp-tableCell").get(0))
+            //$(".fp-tableCell").css("height", "767px")
+            $($(".fp-tableCell").get(0)).css("display", "block")
+            $($(".fp-tableCell").get(1)).css("display", "block")
+            $($(".fp-tableCell").get(2)).css("display", "block")
+//右上角超链接
+            $(".tabnav a").eq(1).mouseover(function(){
+                $(".tabnav").css("backgroundPositionY","30px")
+            })
+            $(".tabnav a").eq(1).mouseout(function(){
+                $(".tabnav").css("backgroundPositionY","0px")
+            })
+//浏览器皮肤
+            $(".skin").hover(function () {
+                var index = $(this).index()
+                console.log($(".img1 span"))
+                $(".btop").css("zIndex",2)
+                $(".img1 span").eq(index).css("opacity", 1)
+                $(".img1 span").eq(index).siblings().css("opacity", 0)
+            })
+        })
+        var num = -23
+        $(".fullpage").fullpage({
+            onLeave: function (index, nextIndex, direction) {
+                //after leaving section 2
+                if (index == 1 && direction == 'down') {
+                    $(".browser1").addClass("addanimate")
+                    $(".txt span").css("opacity", 0)
+                } else if (index == 2 && direction == 'up') {
+                    $(".browser1").removeClass("addanimate")
+                    $(".img1 span").css("opacity", 0)
+                    $(".btop").css("zIndex",3)
+                }
+                if (index == 3 && direction == 'down' || direction == 'up') {
+                    $(".computer").removeClass("endc")
+                    $(".phone").removeClass("endp")
+                }
+                if (index == 3 && direction == 'down' || index == 5 &&direction == 'up') {
+                    num = -23
+                }
+                if (index == 5 &&direction == 'up') {
+                    $(".cen-6").removeClass("endl")
+                }
+            },
+            afterLoad: function (anchorLink, index) {
+
+                //using index
+                if (index == 1) {
+                    $(".hidden").css("display", "block")
+                    $(".txt span").css("opacity", 1)
+                }
+
+                if (index == 2) {
+                    $(".hidden").css("display", "none")
+                }
+                if (index == 3) {
+                    $(".computer").addClass("endc")
+                    $(".phone").addClass("endp")
+                }
+                if (index == 4) {
+                    setInterval(function () {
+                        num++
+                        $(".pointer").css("transform", "rotate(" + 0.5 * num + "deg)")
+                    }, 16)
+
+                }
+                if (index == 5) {
+                   $(".cen-6").addClass("endl")
+
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
